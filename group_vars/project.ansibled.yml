@@ -6,14 +6,17 @@
 vpc_name: ansibled-vpc
 vpc_key: ansibled-key
 vpc_dns_zone: ansibled
-vpc_use_nat: false
 
-#
+# general details about our s3 
+s3_name: intrajp-accesskeys
+upload_backet_access_key_name: intrajp-accesskeys
+upload_file_access_key: ../accessKeys_enc.zip 
+
 # credentials for AWS (created with a command '$ ansible-vault encrypt_string "aws_access_key/aws_secret_key"
 #  --vault-password-file </path/to/password-file>')
 aws_region: ap-northeast-1
 
-#copy and paste the result of these commands.
+# <!-- copy and paste the result of these commands here. -->
 
 # $ ansible-vault encrypt_string "aws_access_key of a user" --name 'aws_access_key'
 # $ ansible-vault encrypt_string "aws_secret_key of a user" --name 'aws_secret_key'

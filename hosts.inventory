@@ -2,5 +2,9 @@
 [vpc]
 vpc.ansibled
 
+[s3]
+s3.ansibled
+
 [project.ansibled:children]
 vpc
+s3

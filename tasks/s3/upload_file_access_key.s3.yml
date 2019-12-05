@@ -1,0 +1,9 @@
+# tasks/s3/upload_file.s3.yml
+# ---
+# upload file to s3 bucket only access key
+- name: Simple PUT operation
+  aws_s3:
+    bucket: "{{ upload_backet_access_key_name }}" 
+    object: /my/desired/accessKeys_enc.zip
+    src: "{{ upload_file_access_key }}"
+    mode: put
