@@ -1,0 +1,45 @@
+# host_vars/vpc.ansibled.yml
+
+# IP CIDR block for the VPC
+vpc_cidr_block: 172.16.0.0/16
+
+# a map defining the subnets we will build in the VPC
+vpc_subnets:
+  private-a:
+    cidr: 172.16.1.0/24
+    az: "{{aws_region}}a"
+  public-a:
+    cidr: 172.16.2.0/24
+    az: "{{aws_region}}a"
+  private-c:
+    cidr: 172.16.3.0/24
+    az: "{{aws_region}}c"
+  public-c:
+    cidr: 172.16.4.0/24
+    az: "{{aws_region}}c"
+
+# a list defining the security groups for our VPC
+vpc_security_groups:
+  - name: vpc
+    description: "Allow internal traffic in the VPC"
+    rules:
+      - proto: all
+        group_name: vpc
+        ports:
+          - 0-65535 
+  - name: allow-public-ssh 
+    description: "Allow public SSH"
+    rules:
+      - proto: tcp 
+        cidr_ip: 0.0.0.0/0
+        ports:
+          - 22
+  - name: allow-public-http
+    description: "Allow public web traffic"
+    rules:
+      - proto: tcp 
+        cidr_ip: 0.0.0.0/0
+        ports:
+          - 80 
+          - 8080 
+          - 443 

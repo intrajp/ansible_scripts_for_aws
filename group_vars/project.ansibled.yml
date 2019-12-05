@@ -1,0 +1,19 @@
+# group_vars/project.ansibled.yml
+# ---
+# specify VPC details and AWS credentials
+#
+# general details about our VPC
+vpc_name: ansibled-vpc
+vpc_key: ansibled-key
+vpc_dns_zone: ansibled
+vpc_use_nat: false
+
+#
+# credentials for AWS (created with a command '$ ansible-vault encrypt_string "aws_access_key/aws_secret_key"
+#  --vault-password-file </path/to/password-file>')
+aws_region: ap-northeast-1
+
+#copy and paste the result of these commands.
+
+# $ ansible-vault encrypt_string "aws_access_key of a user" --name 'aws_access_key'
+# $ ansible-vault encrypt_string "aws_secret_key of a user" --name 'aws_secret_key'
