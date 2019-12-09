@@ -3,7 +3,7 @@
 # creates a s3
 # Create a bucket, add a policy from a file, enable requester pays, enable versioning and tag
 - s3_bucket:
-    name: "{{ s3_name }}"
+    name: "{{ bucket_name }}"
     policy: "{{ lookup('file','./policy/create_accesskey_policy.json') }}"
     encryption: AES256
     requester_pays: yes

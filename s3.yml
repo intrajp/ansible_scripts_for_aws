@@ -1,15 +1,20 @@
-# vpc.yml
+# s3.yml
 # ---
 # playbook that runs our S3 tasks for any hosts in the `s3` group, providing AWS credentials in the environment 
-
+#
 - hosts: s3 
   environment:
     AWS_ACCESS_KEY_ID: "{{ aws_access_key }}"
     AWS_SECRET_ACCESS_KEY: "{{ aws_secret_key }}"
     AWS_REGION: "{{ aws_region }}"
   tasks:
+    - include_tasks: "{{ task_designated }}"
+    #- include_tasks: tasks/s3/get_presigned_url.s3.yml
+    #- include_tasks: tasks/s3/create_bucket.general.s3.yml
+    #
     #- include_tasks: tasks/s3/create_accesskey_bucket.s3.yml
-    - include_tasks: tasks/s3/upload_file_access_key.s3.yml
+    #- include_tasks: tasks/s3/upload_file.general.s3.yml
+    #- include_tasks: tasks/s3/upload_file_access_key.s3.yml
     #- include_tasks: tasks/s3/facts.yml
 
 # how to execute
